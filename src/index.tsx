@@ -4,6 +4,9 @@ import { makeServer } from './api';
 import Application from './components/application';
 
 import './index.css';
+import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 const environment = process.env.NODE_ENV;
 makeServer({ environment });
@@ -14,6 +17,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <Application />
+    <Provider store={store}>
+      <Application />
+    </Provider>
   </React.StrictMode>,
 );
